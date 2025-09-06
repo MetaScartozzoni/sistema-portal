@@ -1,81 +1,37 @@
-name: Build Panels
+name: CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 
 jobs:
-  build:
-    name: Build ${{ matrix.dir }}
+  api-env-check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm run lint:env
+
+  build-panels:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
-        dir:
-          - painel-admin
-          - painel-funcionario
-          - painel-login
-          - painel-secretaria
-    defaults:
-      run:
-        working-directory: ${{ matrix.dir }}
+        panel: [painel-admin, painel-medico, painel-secretaria, painel-funcionario, painel-login]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20.19.1'
-          cache: 'npm'
-          cache-dependency-path: ${{ matrix.dir }}/package-lock.json
+          node-version: '20'
+      - run: npm ci
+        working-directory: ${{ matrix.panel }}
+      - run: npm run build --if-present
+        working-directory: ${{ matrix.panel }}
 
-      - name: Install dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
-
-      - name: Build
-        run: npm run build
-
-  build-medico:
-    name: Build painel-medico (best-effort)
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    defaults:
-      run:
-        working-directory: painel-medico
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.19.1'
-          cache: 'npm'
-          cache-dependency-path: painel-medico/package-lock.json
-
-      - name: Install dependencies (skip scripts)
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci --ignore-scripts
-          else
-            npm install --ignore-scripts
-          fi
-
-      - name: Build shared package
-        run: |
-          cd packages/shared
-          npm ci
-          npm run build
-          npm run build:types
-          cd -
-
-      - name: Build app only
-        run: npm run build

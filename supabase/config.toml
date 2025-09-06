@@ -23,3 +23,6 @@ verify_jwt = false
 
 [functions.admin-system-health]
 verify_jwt = false
+
+[functions.appointment-actions]
+verify_jwt = false

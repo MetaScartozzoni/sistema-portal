@@ -5,6 +5,7 @@ const helmet = require('helmet')
 const rateLimit = require('express-rate-limit')
 
 const { requestContext } = require('./middlewares/requestContext')
+const { requestLogger } = require('./middlewares/requestLogger')
 const { errorHandler, notFoundHandler } = require('./middlewares/errorHandler')
 
 const authRoutes = require('./routes/auth')
@@ -36,6 +37,7 @@ const authLimiter = rateLimit({
 
 // Request context (request id, timing, etc.)
 app.use(requestContext)
+app.use(requestLogger)
 
 // Routes
 app.use('/health', healthRoutes)

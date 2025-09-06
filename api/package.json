@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "lint:env": "node scripts/verify-env.js",
     "routes:gen": "bash ../scripts/generate-routes-manifest.sh",
     "smoke:functions": "node scripts/smoke-functions.js",
     "worker:lead-alerts": "node scripts/lead-alert-worker.js",

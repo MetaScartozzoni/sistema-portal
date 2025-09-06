@@ -31,6 +31,12 @@ cat > "$OUT" <<JSON
       "headers": ["Authorization: Bearer <EDGE_CRON_TOKEN>", "x-edge-token: <EDGE_CRON_TOKEN>"]
     },
     {
+      "name": "appointment-actions",
+      "method": "POST",
+      "path": "/functions/v1/appointment-actions",
+      "headers": ["Authorization: Bearer <USER_JWT>"]
+    },
+    {
       "name": "get-user-painel",
       "method": "POST",
       "path": "/functions/v1/get-user-painel",
