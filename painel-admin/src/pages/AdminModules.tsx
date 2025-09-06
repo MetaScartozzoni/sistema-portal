@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { supabase } from '../../lib/supabaseClient'
 
 type ModuleRow = { key: string; enabled: boolean }
 
@@ -17,16 +18,10 @@ export default function AdminModules() {
     setBusy(key)
     setError(null)
     try {
-      const token = localStorage.getItem('sb-access-token') || ''
-      const res = await fetch('/functions/v1/admin-toggle-module', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ module: key, enabled }),
+      const { error } = await supabase.functions.invoke('admin-toggle-module', {
+        body: { module: key, enabled },
       })
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      if (error) throw error
       setRows((rs) => rs.map((r) => (r.key === key ? { ...r, enabled } : r)))
     } catch (e: any) {
       setError(e?.message || String(e))
@@ -36,7 +31,15 @@ export default function AdminModules() {
   }
 
   useEffect(() => {
-    // TODO: carregar flags reais via get-feature-flags/admin-system-health
+    (async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke('admin-system-health')
+        if (!error && data?.flags) {
+          const f = data.flags as Record<string, boolean>
+          setRows((rs) => rs.map((r) => ({ ...r, enabled: f[`module.${r.key}`] !== false })))
+        }
+      } catch (_) {}
+    })()
   }, [])
 
   return (
@@ -60,4 +63,3 @@ export default function AdminModules() {
     </div>
   )
 }
-
