@@ -27,3 +27,15 @@ async function requireAuth(req, res, next) {
 }
 
 module.exports = { requireAuth }
+
+function requireRole(roles) {
+  const set = new Set(Array.isArray(roles) ? roles : [roles])
+  return (req, res, next) => {
+    const role = req.profile?.role
+    if (!role) return res.status(403).json({ error: 'forbidden' })
+    if (!set.has(role)) return res.status(403).json({ error: 'forbidden' })
+    next()
+  }
+}
+
+module.exports.requireRole = requireRole

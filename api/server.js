@@ -11,6 +11,7 @@ const { errorHandler, notFoundHandler } = require('./middlewares/errorHandler')
 const authRoutes = require('./routes/auth')
 const healthRoutes = require('./routes/health')
 const integrationRoutes = require('./routes/integration')
+const adminRoutes = require('./routes/admin')
 
 const PORT = process.env.PORT || 5000
 const ORIGINS = (process.env.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean)
@@ -45,6 +46,7 @@ app.use('/auth', authLimiter, authRoutes)
 if (process.env.ENABLE_INTEGRATION_ROUTES === 'true') {
   app.use('/integration', integrationRoutes)
 }
+app.use('/admin', adminRoutes)
 
 // 404 and errors
 app.use(notFoundHandler)
