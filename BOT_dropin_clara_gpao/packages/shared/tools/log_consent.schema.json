@@ -1,0 +1,22 @@
+{
+  "name": "log_consent",
+  "description": "Registra consentimento LGPD",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "patientId": {
+        "type": "string"
+      },
+      "consent": {
+        "type": "boolean"
+      },
+      "scope": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "patientId",
+      "consent"
+    ]
+  }
+}

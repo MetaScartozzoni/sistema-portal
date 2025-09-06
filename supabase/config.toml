@@ -1,0 +1,25 @@
+project_id = "hcimldvemwlscilvejli"
+
+[functions.worker]
+verify_jwt = false
+
+[functions.health]
+verify_jwt = false
+
+[functions.auth-accept-invite]
+verify_jwt = false
+
+[functions.auth-webhook-users-sync]
+verify_jwt = false
+
+[functions.get-user-painel]
+verify_jwt = false
+
+[functions.get-feature-flags]
+verify_jwt = false
+
+[functions.admin-toggle-module]
+verify_jwt = false
+
+[functions.admin-system-health]
+verify_jwt = false

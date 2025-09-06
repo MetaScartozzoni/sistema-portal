@@ -1,0 +1,9 @@
+# Root ignore for shared artifacts/secrets
+.supabase/
+supabase/.env
+supabase/.temp/
+**/.DS_Store
+**/node_modules/
+**/dist/
+**/.env
+!**/.env.example

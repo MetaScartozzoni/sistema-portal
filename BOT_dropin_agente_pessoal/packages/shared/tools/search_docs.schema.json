@@ -1,0 +1,15 @@
+{
+  "name": "search_docs",
+  "description": "Busca em documentos internos por termos",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

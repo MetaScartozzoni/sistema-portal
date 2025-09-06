@@ -1,0 +1,21 @@
+{
+  "name": "list_tasks",
+  "description": "Lista tarefas do usuário com filtros",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "open",
+          "done",
+          "all"
+        ],
+        "default": "open"
+      },
+      "query": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "sistema-portal-api",
+  "version": "1.0.0",
+  "description": "API Central do Sistema Portal",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "routes:gen": "bash ../scripts/generate-routes-manifest.sh",
+    "smoke:functions": "node scripts/smoke-functions.js",
+    "worker:lead-alerts": "node scripts/lead-alert-worker.js",
+    "worker:test": "node scripts/test-lead-worker.js",
+    "worker:check-once": "node scripts/lead-alert-single-check.js",
+    "worker:fixed": "node scripts/lead-alert-fixed.js",
+    "db:analyze": "node scripts/analyze-database.js",
+    "db:fk": "node scripts/analyze-foreign-keys.js",
+    "db:detailed": "node scripts/detailed-analysis.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "express-rate-limit": "^7.1.5",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [
+    "api",
+    "healthcare",
+    "portal",
+    "supabase"
+  ],
+  "author": "Sistema Portal",
+  "license": "Private"
+}

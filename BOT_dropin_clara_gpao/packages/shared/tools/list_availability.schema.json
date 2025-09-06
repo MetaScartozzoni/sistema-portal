@@ -1,0 +1,32 @@
+{
+  "name": "list_availability",
+  "description": "Lista horários livres por médico/período",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "doctorId": {
+        "type": "string"
+      },
+      "from": {
+        "type": "string",
+        "description": "YYYY-MM-DD"
+      },
+      "to": {
+        "type": "string",
+        "description": "YYYY-MM-DD"
+      },
+      "turno": {
+        "type": "string",
+        "enum": [
+          "manhã",
+          "tarde",
+          "noite"
+        ]
+      }
+    },
+    "required": [
+      "from",
+      "to"
+    ]
+  }
+}

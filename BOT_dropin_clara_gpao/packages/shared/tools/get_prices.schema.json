@@ -1,0 +1,15 @@
+{
+  "name": "get_prices",
+  "description": "Retorna tabela de preços de consultas/procedimentos",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "procedure": {
+        "type": "string"
+      },
+      "convenio": {
+        "type": "string"
+      }
+    }
+  }
+}

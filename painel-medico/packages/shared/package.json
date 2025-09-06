@@ -1,0 +1,31 @@
+{
+  "name": "@portal/shared",
+  "version": "0.1.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup -c",
+    "build:types": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build && npm run build:types"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "rollup": "^4.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "typescript": "^5.5.4",
+    "rimraf": "^5.0.5"
+  }
+}

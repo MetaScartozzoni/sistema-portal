@@ -1,0 +1,30 @@
+{
+  "name": "create_task",
+  "description": "Cria uma tarefa pessoal do usuário",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string"
+      },
+      "due": {
+        "type": "string",
+        "description": "ISO date"
+      },
+      "priority": {
+        "type": "string",
+        "enum": [
+          "low",
+          "normal",
+          "high"
+        ]
+      },
+      "notes": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "title"
+    ]
+  }
+}

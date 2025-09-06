@@ -1,0 +1,8 @@
+{
+  "name": "get_clinic_info",
+  "description": "Dados da clínica: endereço, horários, telefones",
+  "parameters": {
+    "type": "object",
+    "properties": {}
+  }
+}

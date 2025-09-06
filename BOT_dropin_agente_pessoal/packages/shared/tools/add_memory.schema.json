@@ -1,0 +1,23 @@
+{
+  "name": "add_memory",
+  "description": "Registra memória de preferências/contatos do usuário",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "type": "string"
+      },
+      "key": {
+        "type": "string"
+      },
+      "value": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "userId",
+      "key",
+      "value"
+    ]
+  }
+}

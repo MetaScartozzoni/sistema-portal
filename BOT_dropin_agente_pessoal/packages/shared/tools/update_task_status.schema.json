@@ -1,0 +1,23 @@
+{
+  "name": "update_task_status",
+  "description": "Atualiza status de uma tarefa",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "taskId": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "open",
+          "done"
+        ]
+      }
+    },
+    "required": [
+      "taskId",
+      "status"
+    ]
+  }
+}

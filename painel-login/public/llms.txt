@@ -1,0 +1,4 @@
+## Pages
+- [Login Simples](/simplelogin): Página de login simples do sistema.
+- [Painel do Administrador](/admindashboard): Painel de controle exclusivo para administradores.
+- [Painel do Médico](/doctordashboard): Painel de controle para médicos.

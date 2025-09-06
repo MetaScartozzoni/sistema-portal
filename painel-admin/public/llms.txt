@@ -1,0 +1,16 @@
+## Pages
+- [Agenda - Portal Admin Clínica](/schedule): Gerencie a agenda central da clínica com agendamentos de consultas, controle de horários e status dos atendimentos.
+- [Agenda Central - Portal Admin Clínica](/centralschedule): Gerencie a agenda central da clínica com uma visão de calendário semanal.
+- [Configurações da Agenda - Portal Admin](/calendarsettings): Configure tipos de consulta, horários de trabalho e regras da agenda.
+- [Configurações Gerais - Portal Admin Clínica](/settings): Configure parâmetros globais do sistema da clínica, incluindo dados da empresa, horários de funcionamento e notificações.
+- [Documentos e Modelos - Portal Admin Clínica](/documents): Gerencie documentos institucionais, modelos de e-mail e mensagens do sistema.
+- [Integrações - Portal Admin Clínica](/integrations): Gerencie integrações de API com outros portais da clínica, incluindo portal médico, secretaria e bot de atendimento.
+- [Jornada do Paciente - Portal Admin](/patientjourney): Acompanhe o progresso dos pacientes em um painel Kanban.
+- [Login - Portal Admin Clínica](/login): Acesse o portal administrativo da clínica médica com suas credenciais.
+- [Logs - Portal Admin Clínica](/logs): Visualize e monitore logs do sistema da clínica, incluindo atividades de usuários, erros e eventos importantes.
+- [Manual de Logs - Portal Admin Clínica](/logsmanual): Entenda os logs do sistema, seus significados e as ações recomendadas para cada tipo de evento.
+- [Meu Perfil - Portal Admin](/profile): Visualize e edite suas informações de perfil e altere sua senha.
+- [Permissões - Portal Admin Clínica](/permissions): Gerencie funções e permissões do sistema da clínica, controlando o acesso de usuários a diferentes recursos.
+- [Protocolos de Notificação - Portal Admin](/protocols): Crie e gerencie protocolos de notificação automatizados para otimizar a comunicação interna da clínica.
+- [Sessão Bloqueada - Portal Admin](/lockscreen): No description available
+- [Usuários - Portal Admin Clínica](/users): Gerencie usuários do sistema da clínica, incluindo médicos, secretárias e administradores com controle de permissões.

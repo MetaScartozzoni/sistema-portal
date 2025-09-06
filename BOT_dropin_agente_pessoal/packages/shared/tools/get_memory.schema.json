@@ -1,0 +1,18 @@
+{
+  "name": "get_memory",
+  "description": "Recupera memórias por chave ou todas",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "type": "string"
+      },
+      "key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "userId"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "get_insurances",
+  "description": "Lista convênios aceitos",
+  "parameters": {
+    "type": "object",
+    "properties": {}
+  }
+}

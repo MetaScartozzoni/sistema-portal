@@ -1,0 +1,10 @@
+## Pages
+- [Agenda - Portal Secretaria](/calendar): Gerencie seus agendamentos, visualize o calendário e organize o dia.
+- [Configurações - Portal Secretaria](/settings): Gerencie as configurações do seu perfil, notificações e aparência do portal.
+- [Contatos - Portal Secretaria](/contacts): Gerenciamento de contatos e leads.
+- [Dashboard - Portal Secretaria](/dashboard): Visão geral do dia, incluindo agendamentos, pacientes e atividades recentes.
+- [Jornada do Paciente - Portal Secretaria](/patientjourney): Acompanhe a jornada completa dos pacientes, desde a consulta até o pós-cirúrgico.
+- [Mensagens - Portal Secretaria](/messages): Central de mensagens - Gerencie todas as comunicações com pacientes, médicos e fornecedores
+- [Pacientes - Portal Secretaria](/patients): Gestão completa de pacientes - Cadastro, edição, visualização e controle de informações dos pacientes
+- [Prazos - Portal Secretaria](/deadlines): Gestão de prazos e tarefas com visualização em timeline e associação a protocolos.
+- [Protocolos - Portal Secretaria](/protocols): Registro e acompanhamento de protocolos de ações internas, garantindo rastreabilidade.

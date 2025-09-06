@@ -1,0 +1,45 @@
+// Adições para Clara/GP-AO
+model Patient {
+  id           String        @id @default(cuid())
+  name         String
+  email        String?       @unique
+  phone        String?
+  birthDate    DateTime?
+  insurance    String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  appointments Appointment[]
+  conversations Conversation[]
+}
+
+model Appointment {
+  id         String   @id @default(cuid())
+  patientId  String
+  doctorId   String
+  date       DateTime
+  reason     String?
+  status     String   @default("SCHEDULED")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  patient    Patient  @relation(fields: [patientId], references: [id])
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  channel   String
+  patientId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  patient   Patient? @relation(fields: [patientId], references: [id])
+  messages  Message[]
+}
+
+model Message {
+  id             String   @id @default(cuid())
+  conversationId String
+  direction      String
+  content        String
+  meta           Json?
+  createdAt      DateTime @default(now())
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+}

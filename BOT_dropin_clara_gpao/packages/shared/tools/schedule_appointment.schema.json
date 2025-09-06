@@ -1,0 +1,35 @@
+{
+  "name": "schedule_appointment",
+  "description": "Cria um agendamento na agenda oficial",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "patientId": {
+        "type": "string"
+      },
+      "doctorId": {
+        "type": "string"
+      },
+      "date": {
+        "type": "string",
+        "description": "YYYY-MM-DD"
+      },
+      "time": {
+        "type": "string",
+        "description": "HH:mm"
+      },
+      "reason": {
+        "type": "string"
+      },
+      "insurance": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "patientId",
+      "doctorId",
+      "date",
+      "time"
+    ]
+  }
+}

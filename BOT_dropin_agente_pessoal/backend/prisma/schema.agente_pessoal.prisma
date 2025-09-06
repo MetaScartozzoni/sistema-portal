@@ -1,0 +1,22 @@
+// Agente pessoal — modelos
+model PersonalTask {
+  id        String   @id @default(cuid())
+  title     String
+  notes     String?
+  priority  String   @default("normal") // low|normal|high
+  status    String   @default("open")   // open|done
+  due       DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AgentMemory {
+  id        String   @id @default(cuid())
+  userId    String
+  key       String
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, key], name: "userId_key")
+}

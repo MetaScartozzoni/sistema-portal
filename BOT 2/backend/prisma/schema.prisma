@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// NOTE: Prisma 6+ não permite mais env() no provider. Ajuste manualmente para 'postgresql' quando usar Postgres.
+datasource db {
+  provider = "sqlite" // alterar para "postgresql" em produção se necessário
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum BotStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+}
+
+enum Direction {
+  IN
+  OUT
+}
+
+enum AppointmentStatus {
+  LEAD
+  AGENDADO
+  CONFIRMADO
+  REALIZADO
+  CANCELADO
+}
+
+model User {
+  id           String    @id @default(cuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(USER)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  projects     Project[]
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  ownerId     String
+  owner       User      @relation(fields: [ownerId], references: [id])
+  bots        Bot[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Bot {
+  id        String     @id @default(cuid())
+  name      String
+  status    BotStatus  @default(DRAFT)
+  projectId String
+  project   Project    @relation(fields: [projectId], references: [id])
+  flows     Flow[]
+  messages  Message[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Flow {
+  id             String   @id @default(cuid())
+  botId          String
+  bot            Bot      @relation(fields: [botId], references: [id])
+  name           String
+  jsonDefinition Json
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Message {
+  id        String    @id @default(cuid())
+  botId     String
+  bot       Bot       @relation(fields: [botId], references: [id])
+  direction Direction
+  content   String
+  metadata  Json?
+  // Optional denormalized fields for easier filtering of webhook-originated messages
+  patientId String?   @map("patient_id")
+  tags      String?   // JSON stringified array of tags or comma-separated list
+  contactId String?
+  contact   Contact?  @relation(fields: [contactId], references: [id])
+  createdAt DateTime  @default(now())
+}
+
+model Contact {
+  id               String            @id @default(cuid())
+  externalId       String            @unique // maps to incoming patientId (telefone etc.)
+  name             String?
+  email            String?
+  statusAppointment AppointmentStatus @default(LEAD)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  messages         Message[]
+}
+
